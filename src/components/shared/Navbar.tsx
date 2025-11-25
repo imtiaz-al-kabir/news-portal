@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Button } from "../ui/button";
@@ -10,8 +11,10 @@ import {
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
 import { Switch } from "../ui/switch";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+    const pathname=usePathname()
   return (
     <header className="py-4 shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -27,13 +30,13 @@ const Navbar = () => {
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList className="space-x-8">
               <NavigationMenuItem>
-                <NavigationMenuLink href="/news" className="hover:text-red-500">
+                <NavigationMenuLink href="/news" className={`${pathname=== "/news"?"text-red-500 font-bold":""} hover:text-red-500`}>
                   News
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="/services">
-                  <NavigationMenuTrigger className="hover:text-red-500">
+                  <NavigationMenuTrigger className={`${pathname=== "/services"?"text-red-500 font-bold":""} hover:text-red-500`}>
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -64,11 +67,11 @@ const Navbar = () => {
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/about">About</NavigationMenuLink>
+                <NavigationMenuLink href="/about" className={`${pathname=== "/about"?"text-red-500 font-bold":""} hover:text-red-500`}>About</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem></NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
+                <NavigationMenuLink href="/contact" className={`${pathname=== "/contact"?"text-red-500 font-bold":""} hover:text-red-500`}>Contact</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem></NavigationMenuItem>
             </NavigationMenuList>
