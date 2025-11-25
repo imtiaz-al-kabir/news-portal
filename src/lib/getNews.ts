@@ -1,7 +1,7 @@
 export const getNews = async (category: string = "", search: string = "") => {
   try {
     const response = await fetch(
-      `http://localhost:4000/news?search=${search}&category=${category}`
+      `http://localhost:4000/news?search=${search}&sort=${category}`
     );
 
     if (!response.ok) {
