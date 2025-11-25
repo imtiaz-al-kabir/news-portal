@@ -11,6 +11,7 @@ const NewsCard = ({ item }: NewsCardProps) => {
           src={item.imageUrl}
           width={500}
           height={500}
+          priority
           alt="image"
           className="mb-5 md:h-56 rounded hover:scale-105 cursor-pointer transition-all duration-200"
         />
@@ -18,7 +19,7 @@ const NewsCard = ({ item }: NewsCardProps) => {
           <h2 className="text-xl font-semibold my-3">
             {item.title.substring(0, 65)}..
           </h2>
-          <p className="mb-4">{item.description.substring(0,90)}..</p>
+          <p className="mb-4">{item.description.substring(0, 90)}..</p>
 
           <Link href={"/news"}>
             <Button variant="default">Read More</Button>

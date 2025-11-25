@@ -1,5 +1,4 @@
-import NewsCard from "../../components/shared/NewsCard";
-import { NewsItem } from "../../types/news";
+import NewsList from "../../components/news/NewsList";
 
 const NewsPage = async () => {
   const data = await fetch("http://localhost:4000/news");
@@ -10,10 +9,8 @@ const NewsPage = async () => {
         All News<span className="text-sm">({news.length})</span>{" "}
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {news.map((item: NewsItem) => (
-          <NewsCard key={item._id} item={item} />
-        ))}
+      <div>
+        <NewsList />
       </div>
     </div>
   );
