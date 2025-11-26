@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 const NewsCard = ({ item }: NewsCardProps) => {
   return (
     <div className="border p-4 rounded-md shadow-md">
-      <Link href={`/news/${item?._id}`}>
+      <div>
         <Image
           src={item.imageUrl}
           width={500}
@@ -21,11 +21,11 @@ const NewsCard = ({ item }: NewsCardProps) => {
           </h2>
           <p className="mb-4">{item.description.substring(0, 90)}..</p>
 
-          <Link href={"/news"}>
+          <Link href={`/news/${item._id}`}>
             <Button variant="default">Read More</Button>
           </Link>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

@@ -1,36 +1,87 @@
-import Image from "next/image";
-import { Button } from "../ui/button";
+"use client";
 
-const Banner = () => {
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+interface NewsItem {
+  _id: string;
+  title: string;
+  category: string;
+  description: string;
+  imageUrl: string;
+}
+
+export default function NewsCardCarousel() {
+  const [news, setNews] = useState<NewsItem[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Fetch news from API
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const res = await fetch("https://news-portal-server-liart.vercel.app/news");
+        const data = await res.json();
+        setNews(data);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    };
+    fetchNews();
+  }, []);
+
+  useEffect(() => {
+    if (news.length === 0) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % news.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [news]);
+
+  if (news.length === 0) {
+    return <p className="p-5 text-center">Loading news...</p>;
+  }
+
+  const slide = news[currentIndex];
+
   return (
-    <div className="bg-slate-100">
-      <div className="p-5 grid grid-cols-1 md:grid-cols-2 items-center gap-3">
-        <div>
+    <div className="max-w-7xl  mx-auto p-6 relative">
+      {/* Card */}
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col transition-all duration-500">
+        <div className="relative h-96 w-full">
           <Image
-            className="rounded-lg"
-            src="https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?q=80&w=1983&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            width={500}
-            height={500}
-            alt="image"
+            src={slide.imageUrl}
+            alt={slide.title}
+            fill
+            className="object-cover"
           />
         </div>
-        <div>
-          <h4 className="text-sm text-gray-700 ">Technology</h4>
-          <h2 className="pt-5 text-xl font-bold">
-            Panova and Olmos Lose in Beijing Doubles Quarterfinals
-          </h2>
-          <p className="py-5">
-            Russian Alexandra Panova and Mexican Giuliana Olmos were defeated in
-            the quarterfinals of the Beijing doubles tournament, with a score of
-            4/6, 4/6. The Korea Inter-bank Offered Rates (Koribor) for September
-            30 were released, providing key interest rates for financial
-            institutions.
-          </p>
-          <Button variant="default">Read More</Button>
+        <div className="p-4 flex flex-col">
+          <h4 className="text-sm text-gray-500">{slide.category}</h4>
+          <h2 className="text-xl font-bold mt-1">{slide.title}</h2>
+          <p className="text-gray-700 mt-2 flex-1">{slide.description}</p>
+          <Link
+            href="/news"
+            className="mt-4 self-start bg-black text-white px-5 py-3 rounded-2xl"
+          >
+            Show More
+          </Link>
         </div>
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 py-4">
+        {news.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`h-3 w-3 rounded-full ${
+              i === currentIndex ? "bg-blue-600" : "bg-gray-400"
+            }`}
+          ></button>
+        ))}
       </div>
     </div>
   );
-};
-
-export default Banner;
+}
