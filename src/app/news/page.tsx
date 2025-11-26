@@ -5,7 +5,7 @@ const NewsPage = async () => {
   const news = await data.json();
   return (
     <div >
-      <h1 className="text-2xl font-bold my-8">
+      <h1 className="text-2xl font-bold my-8 text-center md:text-start px-5">
         All News<span className="text-sm">({news.length})</span>{" "}
       </h1>
 

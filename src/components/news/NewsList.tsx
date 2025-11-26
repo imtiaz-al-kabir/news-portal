@@ -21,7 +21,7 @@ const NewsList = () => {
   }, [category, search]);
   return (
     <div>
-      <div className="flex flex-col py-4 sm:flex-row justify-between items-center">
+      <div className="flex flex-col py-4 sm:flex-row justify-between items-center px-5">
         <SearchBar onSearch={setSearch} />
         <CategoryFilter onCategoryChange={setCategory
         } />

@@ -11,11 +11,11 @@ interface categoryChangeProps {
 }
 
 const CategoryFilter = ({ onCategoryChange }: categoryChangeProps) => {
-  const categories = ["all", "health", "tech", "sports","business"];
+  const categories = ["all", "health", "tech", "sports", "business"];
 
   return (
-    <div className="flex flex-cl gap-2 items-center justify-center mx-4">
-      <h3>Filter by Category:</h3>
+    <div className="flex flex-cl gap-2 items-center justify-center mx-4 ">
+      <h3 className="hidden md:block">Filter by Category:</h3>
 
       <Select
         onValueChange={(value) =>
