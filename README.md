@@ -1,7 +1,8 @@
 # 📰 News Portal
 
 
-![Live link](https://news-portal-psi-five.vercel.app/) 
+
+[News Portal Live](https://news-portal-psi-five.vercel.app/)
 
 
 ## **Project Description**
