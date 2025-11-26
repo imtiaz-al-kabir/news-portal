@@ -3,6 +3,7 @@
 
 
 [News Portal Live](https://news-portal-psi-five.vercel.app/)
+[News Portal server](https://news-portal-server-liart.vercel.app/)
 
 
 ## **Project Description**
