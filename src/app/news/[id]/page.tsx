@@ -34,8 +34,8 @@ export default async function NewsDetails({
   }
 
   return (
-    <section className="py-12">
-      <article className="max-w-4xl mx-auto p-6 shadow-md border rounded-lg">
+    <section className="py-12 px-5">
+      <article className="max-w-4xl mx-auto p-6 shadow-md border rounded-lg  ">
         {post.imageUrl && (
           <div className="mb-6">
             <Image

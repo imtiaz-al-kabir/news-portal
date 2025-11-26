@@ -1,8 +1,8 @@
 # 📰 News Portal
 
-![GitHub top language](https://img.shields.io/github/languages/top/your-username/news-portal?style=for-the-badge) 
-![GitHub repo size](https://img.shields.io/github/repo-size/your-username/news-portal?style=for-the-badge) 
-![License](https://img.shields.io/github/license/your-username/news-portal?style=for-the-badge)
+
+![Live link](https://news-portal-psi-five.vercel.app/) 
+
 
 ## **Project Description**
 **News Portal** is a fullstack application built with **Next.js 13**, **React**, **Tailwind CSS**, and **Node.js/Express**.  

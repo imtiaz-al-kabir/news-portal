@@ -21,13 +21,13 @@ const NewsList = () => {
   }, [category, search]);
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col py-4 sm:flex-row justify-between items-center">
         <SearchBar onSearch={setSearch} />
         <CategoryFilter onCategoryChange={setCategory
         } />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
         {news.map((item: NewsItem) => (
           <NewsCard key={item._id} item={item} />
         ))}
